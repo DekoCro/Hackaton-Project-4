@@ -77,8 +77,9 @@ class OptionController extends Controller
         $option = Option::find($id);
 
         $vote = \App\Vote::where('user_id' , '=', Auth::id())->join('options', 'votes.option_id', '=', 'options.id')->where('options.poll_id' , '=' , $option->poll_id)->first();
+
         if($vote){
-            
+            return redirect()->route('poll.display')->with('error','You already voted, not possible to vote again!');
         } else {
             $vote = new \App\Vote;
             $vote->option_id = $option->id;
@@ -94,7 +95,7 @@ class OptionController extends Controller
             $vote->save();
             $option->save();
 
-            return redirect()->route('poll.display');
+            return redirect()->route('poll.display')->with('success','Item created successfully!');
         }
     
     }
