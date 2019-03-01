@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Poll extends Model
 {
+    public $fillable = [
+        'question',
+        'description'
+    ];
+
     public function options()
     {
         return $this->hasMany('App\Option');

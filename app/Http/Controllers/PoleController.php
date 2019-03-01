@@ -33,7 +33,8 @@ class PoleController extends Controller
 
         $poll->question = request('question');
         $poll->description = request('description');
-
+        $poll->nr_of_options = request('nr_of_options');
+        
         return view('/poll/create' , compact('poll'));
 
         
@@ -51,6 +52,7 @@ class PoleController extends Controller
 
         $poll->question = request('question');
         $poll->description = request('description');
+        $poll->nr_of_options = request('nr_of_options');
         //$poll->user_id = Auth::id();
         $poll->user_id = 1;
         $poll->save();
@@ -78,6 +80,9 @@ class PoleController extends Controller
     public function edit($id)
     {
         //
+        $poll = Poll::findOrFail($id);
+
+        return view('poll/edit', compact('poll'));
     }
 
     /**
@@ -90,6 +95,12 @@ class PoleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $poll = Poll::findOrFail($id);
+
+
+        $poll->update($request->all());
+
+        return redirect(action('PoleController@index'));
     }
 
     /**

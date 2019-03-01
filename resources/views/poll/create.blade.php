@@ -27,5 +27,8 @@
     <label for="">Describe your poll</label>
     <textarea name="description" type="text" cols="30" rows="10"></textarea>
 
+    <label for="">How many options you need?</label>
+    <input type="number" name="nr_of_options">
+
     <input type="submit" value="Submit">
 </form>
