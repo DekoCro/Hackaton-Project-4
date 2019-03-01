@@ -57,7 +57,7 @@ class PoleController extends Controller
         $poll->user_id = 1;
         $poll->save();
 
-        return redirect()->route('option.form', $poll->id);
+        return redirect()->route('option.form', ['poll_id' =>$poll->id , 'num' => $poll->nr_of_options ]);
     }
 
     /**
