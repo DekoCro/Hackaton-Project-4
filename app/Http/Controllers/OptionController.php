@@ -62,7 +62,32 @@ class OptionController extends Controller
      */
     public function show($id)
     {
-        //
+        $option = Option::findOrFail($id);
+
+        return view('/poll/detail' , compact('option'));
+    }
+
+    public function vote($id)
+    {
+        $request = request();
+
+        $option = Option::find($id);
+
+        $vote = new \App\Vote;
+        $vote->option_id = $option->id;
+
+        if($request->input('up')) {
+            $vote->vote = 1;
+            $option->rating++;
+        } elseif ($request->input('down')) {
+            $vote->vote = -1;
+            $option->rating--;
+        }
+
+        $vote->save();
+        $option->save();
+
+        return redirect()->route('poll.display');
     }
 
     /**

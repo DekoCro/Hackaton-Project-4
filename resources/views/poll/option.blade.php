@@ -5,7 +5,7 @@
     
     <label for="">Option {{$i}} </label>
     <input type="text" name="name[{{$i}}]">
-
+    
     @endfor
 
     <input type="hidden" name="poll_id" value="{{$poll_id}}">

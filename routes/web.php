@@ -32,4 +32,7 @@ Route::post('/poll/{id}/edit', 'PoleController@update')->name('poll.edit')->midd
 
 Route::get('/poll/{id}/detail', 'PoleController@detail')->name('poll.detail');
 
+Route::get('/poll/options/1', 'OptionController@show')->name('option.show');
+Route::post('/poll/options/{id}' , 'OptionController@vote');
+
 
