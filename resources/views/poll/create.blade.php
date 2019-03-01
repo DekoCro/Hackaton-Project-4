@@ -1,23 +1,3 @@
-
-
-
-{{-- {!! Form::open(['route' => ['answer.store', $question->id], 'method' => 'post']) !!}
- 
-    <div class="form-group">
-        <label for="">Poll name:</label><br>
-    {!! Form::input('question', $answer->text, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        <label for="">Poll description:</label><br>
-        {!! Form::textarea('description', $answer->text, ['class' => 'form-control']) !!}
-    </div>
- 
-    <div class="form-group">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    </div>
- 
-{!! Form::close() !!} --}}
-
 <form action="/poll/create" method="post">
     @csrf
 

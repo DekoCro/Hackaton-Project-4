@@ -27,10 +27,11 @@ class OptionController extends Controller
         // $option = new Option;
 
         // $names = request('name');
+        $num = request('num');
         
 
 
-        return view('/poll/option' , compact('poll_id'));
+        return view('/poll/option' , compact('poll_id' , 'num'));
     }
 
     /**
