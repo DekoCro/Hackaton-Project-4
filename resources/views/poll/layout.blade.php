@@ -13,10 +13,12 @@
 
     <a href="{{ url('/poll/create')}}">Create new poll</a>
 
+    @foreach($polls as $poll)
     <div>
         <h3>Poll {{ $poll->id }}:</h3>
         <h4>{{ $poll->question }}</h4>
         <p>{{ $poll->description }}</p>
     </div>
+    @endforeach
 </body>
 </html>

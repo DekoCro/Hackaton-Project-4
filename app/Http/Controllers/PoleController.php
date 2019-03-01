@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Poll;
+use App\Option;
 use Auth;
 
 class PoleController extends Controller
@@ -15,7 +16,9 @@ class PoleController extends Controller
      */
     public function index()
     {
-        return view('/poll/layout');
+        $polls = Poll::get();
+
+        return view('/poll/layout' , compact('polls'));
     }
 
     /**
@@ -29,9 +32,6 @@ class PoleController extends Controller
 
         $poll->question = request('question');
         $poll->description = request('description');
-        // $poll->user_id = Auth::id();
-
-        // $poll->save();
 
         return view('/poll/create' , compact('poll'));
 
@@ -53,6 +53,7 @@ class PoleController extends Controller
         //$poll->user_id = Auth::id();
         $poll->user_id = 1;
         $poll->save();
+
         return redirect()->route('poll.display');
     }
 
