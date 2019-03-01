@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/poll/index', 'PoleController@index')->name('poll.display');
+
+Route::get('/poll/create', 'PoleController@create');
+Route::post('/poll/create', 'PoleController@store')->name('poll.store')->middleware();
