@@ -18,6 +18,11 @@
         <h3>Poll {{ $poll->id }}:</h3>
         <h4>{{ $poll->question }}</h4>
         <p>{{ $poll->description }}</p>
+        <ul>
+        @foreach($options as $option)
+        <li>{{$option->name}}</li>
+        @endforeach
+        </ul>
     </div>
     @endforeach
 </body>

@@ -17,8 +17,9 @@ class PoleController extends Controller
     public function index()
     {
         $polls = Poll::get();
+        $options = Option::get();
 
-        return view('/poll/layout' , compact('polls'));
+        return view('/poll/layout' , compact('polls', 'options'));
     }
 
     /**
@@ -54,7 +55,7 @@ class PoleController extends Controller
         $poll->user_id = 1;
         $poll->save();
 
-        return redirect()->route('poll.display');
+        return redirect()->route('option.form', $poll->id);
     }
 
     /**

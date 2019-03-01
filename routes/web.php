@@ -23,3 +23,7 @@ Route::get('/poll/index', 'PoleController@index')->name('poll.display');
 
 Route::get('/poll/create', 'PoleController@create');
 Route::post('/poll/create', 'PoleController@store')->name('poll.store')->middleware();
+
+Route::get('/poll/option/{poll_id}', 'OptionController@create')->name('option.form');
+Route::post('/poll/option', 'OptionController@store')->name('option.store')->middleware();
+

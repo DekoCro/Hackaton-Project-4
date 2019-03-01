@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Option;
 
 class OptionController extends Controller
 {
@@ -21,9 +22,15 @@ class OptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($poll_id)
     {
-        //
+        // $option = new Option;
+
+        // $names = request('name');
+        
+
+
+        return view('/poll/option' , compact('poll_id'));
     }
 
     /**
@@ -34,7 +41,16 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $names = request('name');
+
+        foreach($names as $name){
+            $option = new Option;
+            $option->name = $name;
+            $option->poll_id = request('poll_id');
+            $option->save();
+        }
+
+        return redirect()->route('poll.display');
     }
 
     /**
