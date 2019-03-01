@@ -113,4 +113,12 @@ class PoleController extends Controller
     {
         //
     }
+
+    public function detail($id)
+    {
+        $poll = Poll::where('id',$id)->first();
+        $options = Option::get();
+
+        return view('/poll/detail' , compact('poll', 'options'));
+    }
 }

@@ -18,16 +18,16 @@
     
     <div>
         <h3>Poll {{ $poll->id }}:</h3>
-        <h4>{{ $poll->question }}</h4>
-        <p>{{ $poll->description }}</p>
-        <a href="{{route('poll.edit', ['id' => 1])}}">Edit</a>
+    <a href="{{route('poll.detail', ['id' => $poll->id])}}">{{ $poll->question }}</a>
+        {{-- <p>{{ $poll->description }}</p>
+        <a href="{{route('poll.edit', ['id' => $poll->id])}}">Edit</a>
         <ul>
         @foreach($options as $option)
         @if($poll->id == $option->poll_id)
         <li>{{$option->name}}</li>
-        @endif
+        @endif 
         @endforeach
-        </ul>
+        </ul>--}}
     </div>
     @endforeach
 </body>

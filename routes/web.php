@@ -30,3 +30,6 @@ Route::post('/poll/option', 'OptionController@store')->name('option.store')->mid
 Route::get('/poll/{id}/edit', 'PoleController@edit')->name('poll.edit');
 Route::post('/poll/{id}/edit', 'PoleController@update')->name('poll.edit')->middleware();
 
+Route::get('/poll/{id}/detail', 'PoleController@detail')->name('poll.detail');
+
+
