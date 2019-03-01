@@ -76,22 +76,27 @@ class OptionController extends Controller
 
         $option = Option::find($id);
 
-        $vote = new \App\Vote;
-        $vote->option_id = $option->id;
-        $vote->user_id = Auth::id();
+        $vote = \App\Vote::where('user_id' , '=', Auth::id())->join('options', 'votes.option_id', '=', 'options.id')->where('options.poll_id' , '=' , $option->poll_id)->first();
+        if($vote){
+            
+        } else {
+            $vote = new \App\Vote;
+            $vote->option_id = $option->id;
+            $vote->user_id = Auth::id();
 
-        if($request->input('up')) {
-            $vote->vote = 1;
-            $option->rating++;
-        } elseif ($request->input('down')) {
-            $vote->vote = -1;
-            $option->rating--;
+            if($request->input('up')) {
+                $vote->vote = 1;
+                $option->rating++;
+            } elseif ($request->input('down')) {
+                $vote->vote = -1;
+                $option->rating--;
+            }
+            $vote->save();
+            $option->save();
+
+            return redirect()->route('poll.display');
         }
-
-        $vote->save();
-        $option->save();
-
-        return redirect()->route('poll.display');
+    
     }
 
     /**
